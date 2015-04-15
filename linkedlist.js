@@ -43,6 +43,24 @@ var linkedList = function(){
   return obj;
 }
 
+// constant space and constant time
+var reverseLinkedList = function(list){ // 7 9 
+  var ref = null;
+  if(list.head.next)
+    ref = list.head.next;
+
+  while(ref){
+    var temp = list.head;
+    console.log(temp);
+    list.head = ref;
+    ref = ref.next; //null
+    if(list.head)
+      list.head.next = temp;
+  }
+  console.log(list.head);
+  return list;
+}
+
 //******TESTING*******
 var list = linkedList();
 list.addToTail(5);
@@ -61,7 +79,14 @@ var printAll = function(list){
 };
 
 printAll(list);
+
+console.log('\n\n');
 list.removeHead();
+
 printAll(list);
 console.log(list.contains(10));
+
+console.log('\n\n');
+reverseLinkedList(list);
+printAll(list);
 
